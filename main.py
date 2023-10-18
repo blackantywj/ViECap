@@ -1,3 +1,8 @@
+'''
+Date:2023/10/18
+Code by: Vincent
+SSSShit happens!!!
+'''
 import os
 import sys
 import clip
