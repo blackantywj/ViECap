@@ -4,6 +4,18 @@ import torch.nn.functional as nnf
 from typing import Tuple, Optional, List
 from transformers import GPT2LMHeadModel
 
+class ConditionalEncoder(nn.Module):
+    '''
+    Args:
+
+    '''
+    def __init__(
+        self,
+        input_size: int,
+
+    ) -> None:
+        super().__init__()
+
 class MlpTransformer(nn.Module):
 
     def __init__(
@@ -219,6 +231,8 @@ class ClipCaptionModel(nn.Module):
         """
         caption_embeddings = self.word_embed(caption_tokens)
         continuous_embeddings = self.mapping_network(continuous_prompt).view(-1, self.continuous_length, self.gpt_hidden_size) # (b, continuous_length, gpt_hidden_size)
+        # conditional prompt injection
+        # 
         if hard_prompts_length is not None:   # with hard prompts
             if self.only_hard_prompt:
                 embeddings = caption_embeddings
